@@ -12,12 +12,5 @@ export default [
                 res.status(200).send(result);
             }
         ]
-    },
-    {
-        path: "/",
-        method: "get",
-        handler: async (req: Request, res: Response) => {
-            res.send("Hello world!");
-        }
     }
 ];
