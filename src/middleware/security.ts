@@ -16,7 +16,18 @@ export const handleRateLimit = (router: Router) => {
 export const handleJSONBodyLimit = (router: Router) =>
   router.use(express.json({ limit: '10kb' })); // limit body to 10kb
 
-export const handleHTTPHeaders = (router: Router) => router.use(helmet());
+//TODO: add unsafe-eval to srcipt-src only obn dev mode
+export const handleHTTPHeaders = (router: Router) => router.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "default-src": ["'self'"],
+      "script-src": ["'self'", "'unsafe-eval'"],
+      "object-src": ["'none'"],
+    },
+    reportOnly: true,
+  })
+);
+
 
 export const handleCSRF = (router: Router) =>
   router.use(

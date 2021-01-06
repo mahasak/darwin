@@ -1,7 +1,7 @@
 import http from 'http';
 import express from 'express';
 import 'express-async-errors';
-import { applyMiddleware, applyRoutes } from './utils';
+import { applyMiddleware, applyReactSSR, applyRoutes } from './utils';
 import middleware from './middleware';
 import errorHandlers from './middleware/errorHandlers';
 import routes from './services';
@@ -23,17 +23,19 @@ process.on('unhandledRejection', (e) => {
   });
   process.exit(1);
 });
-
-const router = express();
-applyMiddleware(middleware, router);
-applyRoutes(routes, router);
-applyMiddleware(errorHandlers, router);
-
+const app = express();
 const { PORT = 3000 } = process.env;
-const server = http.createServer(router);
-
+const server = http.createServer(app);
 async function start() {
+
   await initDependencies();
+  applyMiddleware(middleware, app);
+  applyRoutes(routes, app);
+  await applyReactSSR(app);
+  applyMiddleware(errorHandlers, app);
+
+
+  
   server.listen(PORT, () =>
     logger.info({
       message: `Server is running http://localhost:${PORT}...`,
