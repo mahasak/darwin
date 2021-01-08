@@ -18,7 +18,7 @@
         "target": "es6",
         "module": "commonjs",
         "allowJs": true,
-        "outDir": "dist"
+        "outDir": "dist/server"
     },
     "exclude": [
         "dist",

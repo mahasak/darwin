@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "build": "NODE_ENV=production REACT_SSR_ENV=production tsc --build tsconfig.json ",
-    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
-    "start": "cross-env NODE_ENV=production REACT_SSR_ENV=production node dist/server.js",
+    "build": "NODE_ENV=production REACT_SSR_ENV=production tsc --build tsconfig.server.json ",
+    "dev": "tsc-watch --onSuccess \"node ./dist/server/server.js\"",
+    "start": "cross-env NODE_ENV=production REACT_SSR_ENV=production node dist/server/server.js",
     "test": "jest --coverage --verbose --passWithNoTests"
   },
   "repository": {
