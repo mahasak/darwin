@@ -1,0 +1,16 @@
+{
+    "delay": "2000",
+    "verbose": true,
+    "ignore": [
+      "dist",
+      "public"
+    ],
+    "watch": [
+      "src/server/**/*.{ts,tsx}"
+    ],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "js json ts tsx",
+    "exec": "ts-node src/server/server.ts"
+  }

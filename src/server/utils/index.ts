@@ -1,5 +1,5 @@
 import { Application, Router, Request, Response, NextFunction } from 'express';
-import register from '@react-ssr/express/register';
+
 
 type Wrapper = ((router: Router) => void);
 
@@ -23,10 +23,6 @@ type Route = {
   method: string;
   handler: Handler | Handler[];
 };
-
-export const applyReactSSR = async (router: Application) => {
-  await register(router);
-}
 
 export const applyRoutes = (routes: Route[], router: Router) => {
   for (const route of routes) {

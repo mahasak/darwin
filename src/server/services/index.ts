@@ -1,5 +1,4 @@
 import searchRoutes from './search/routes';
 import authRoutes from './auth/routes';
 import topPlacesRoutes from './topPlaces/routes';
-import dashboard from './dashboard/routes';
-export default [...searchRoutes, ...authRoutes, ...topPlacesRoutes,...dashboard];
+export default [...searchRoutes, ...authRoutes, ...topPlacesRoutes,];

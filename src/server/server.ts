@@ -1,7 +1,7 @@
 import http from 'http';
 import express from 'express';
 import 'express-async-errors';
-import { applyMiddleware, applyReactSSR, applyRoutes } from './utils';
+import { applyMiddleware, applyRoutes } from './utils';
 import middleware from './middleware';
 import errorHandlers from './middleware/errorHandlers';
 import routes from './services';
@@ -31,7 +31,6 @@ async function start() {
   await initDependencies();
   applyMiddleware(middleware, app);
   applyRoutes(routes, app);
-  await applyReactSSR(app);
   applyMiddleware(errorHandlers, app);
 
 
