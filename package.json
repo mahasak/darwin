@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "build": "NODE_ENV=production  tsc --build tsconfig.server.json ",
+    "build": "NODE_ENV=production  tsc --build tsconfig.json ",
+    "build:client": "./node_modules/.bin/webpack --config ./src/webpack.config.js --progress",
+    "build:server": "tsc",
+    "start:dev": "npm run build:client && nodemon --config ./nodemon.json",
     "dev": "tsc-watch --onSuccess \"node ./dist/server/server.js\"",
-    "start:dev": "nodemon --config ./nodemon.json",
     "start:prod": "node dist/server/server.js",
     "start": "cross-env NODE_ENV=production REACT_SSR_ENV=production node dist/server.js",
     "test": "jest --coverage --verbose --passWithNoTests"
@@ -39,8 +41,6 @@
     ]
   },
   "dependencies": {
-    "@react-ssr/core": "^0.24.0",
-    "@react-ssr/express": "^0.24.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.0",
     "@types/cookie-parser": "^1.4.2",
@@ -53,8 +53,6 @@
     "@types/node": "^14.14.20",
     "@types/pg": "^7.14.7",
     "@types/pg-format": "^1.0.1",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
     "@types/redis": "^2.8.28",
     "@types/swagger-ui-express": "^4.1.2",
     "antd": "^4.10.0",
@@ -78,6 +76,7 @@
     "rand-token": "^1.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-hot-loader": "^4.13.0",
     "redis": "^3.0.2",
     "swagger-ui-express": "^4.1.6",
     "ts-node": "^9.1.1",
@@ -88,10 +87,30 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
     "@types/supertest": "^2.0.10",
+    "@types/webpack": "^4.41.25",
+    "@types/webpack-dev-middleware": "^3.7.2",
+    "@types/webpack-hot-middleware": "^2.25.3",
+    "csp-html-webpack-plugin": "^5.0.1",
+    "csp-webpack-plugin": "^2.0.2",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^4.5.1",
     "jest": "^26.6.3",
+    "node-sass": "^5.0.0",
+    "postcss-loader": "^4.1.0",
+    "sass": "^1.32.2",
+    "sass-loader": "^10.1.0",
+    "source-map-loader": "^2.0.0",
+    "style-loader": "^2.0.0",
     "supertest": "^6.0.1",
     "ts-jest": "^26.4.4",
-    "ts-node-dev": "^1.1.1"
+    "ts-loader": "^8.0.14",
+    "ts-node-dev": "^1.1.1",
+    "webpack": "^5.12.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-middleware": "^4.0.2",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }

@@ -20,9 +20,11 @@ export const handleJSONBodyLimit = (router: Router) =>
 export const handleHTTPHeaders = (router: Router) => router.use(
   helmet.contentSecurityPolicy({
     directives: {
-      "default-src": ["'self'"],
-      "script-src": ["'self'", "'unsafe-eval'"],
-      "object-src": ["'none'"],
+      "default-src": ["'self'", "'unsafe-eval'"],
+      'base-uri': "'self'",
+      'object-src': "'none'",
+      'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'"],
+      'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'"]
     },
     reportOnly: true,
   })

@@ -1,14 +1,13 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "jsx": "preserve",
+        "jsx": "react",
         "lib": [
             "dom",
             "dom.iterable",
             "es6"
         ],
         "sourceMap": true,
-        "strict": true,
         "noImplicitAny": false,
         "moduleResolution": "node",
         "esModuleInterop": true,
@@ -35,7 +34,8 @@
         "./src/**/*.test.ts",
     ],
     "include": [
-        "src/",
+        "src/**/*.ts",
+    "src/**/*.tsx",
         "typings",
         "src/server/server.js"
     ]
