@@ -1,0 +1,21 @@
+{
+    "extends": [ "tslint:latest", "tslint-react" ],
+    "rules": {
+        "quotemark": [ true, "single" ],
+        "space-before-function-paren": true,
+        "ordered-imports": false,
+        "trailing-comma": false,
+        "no-var-requires": false,
+        "no-console": false,
+        "no-implicit-dependencies": false,
+        "no-submodule-imports": false,
+
+      "max-line-length": {
+        "options": [100]
+      },
+      "member-ordering": false,
+      "no-consecutive-blank-lines": false,
+      "object-literal-sort-keys": false,
+      "variable-name": [true, "allow-leading-underscore"]
+    }
+  }

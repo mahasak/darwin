@@ -18,6 +18,16 @@ export class Hello extends React.Component<IAppProps, IAppState> {
 			name: null
 		};
 	}
+
+    async componentDidMount() {
+		try {
+			let r = await fetch('/api/test');
+            let data = await r.json();
+			this.setState({ ...data });
+		} catch (error) {
+			console.log(error);
+		}
+    }
     
     render() {
     return <h1>Hellox {this.state.name}. This is a <area shape="" coords="" href="" alt=""/> {this.props.framework} application using {this.props.compiler} with {this.props.bundler}</h1>

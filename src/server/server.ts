@@ -1,56 +1,35 @@
-import http from 'http';
-import express from 'express';
-import 'express-async-errors';
-import { applyMiddleware, applyRoutes } from './utils';
-import middleware from './middleware';
-import errorHandlers from './middleware/errorHandlers';
-import routes from './services';
-import { initDependencies } from './config';
-import { logger } from './config/logger';
-import wds from './utils/wds'
-import path from 'path';
-process.on('uncaughtException', (e) => {
-  logger.error({
-    message: `uncaughtException`,
-    extra: e,
-  });
-  process.exit(1);
-});
+import * as express from 'express';
 
-process.on('unhandledRejection', (e) => {
-  logger.error({
-    message: `unhandledRejection`,
-    extra: e,
-  });
-  process.exit(1);
-});
+import * as path from 'path';
+const port = process.env.PORT || 5000
+
+if (typeof process.env.NODE_ENV === 'undefined') {
+    process.env.NODE_ENV = 'production';
+}
+//import wds from './wds'
+import wds from './wds'
+const isDevelopment = process.env.NODE_ENV === 'development';
 const app = express();
-const { PORT = 3000 } = process.env;
-const server = http.createServer(app);
-const isDevelopment = process.env.NODE_ENV === 'production' ? false : true;
 
-
-async function start() {
-
-  //await initDependencies();
-  //applyMiddleware(middleware, app);
-  //applyRoutes(routes, app);
-  
-
-  if (isDevelopment) {
+if (isDevelopment) {
     //const wds = require('./wds');
     wds(app);
-  } else {
+} else {
     app.use(express.static(path.resolve(__dirname, 'public')));
-  }
-
-  applyMiddleware(errorHandlers, app);
-  
-  server.listen(PORT, () =>
-    logger.info({
-      message: `Server is running http://localhost:${PORT}...`,
-    }),
-  );
 }
 
-start();
+app.get("/api", (req: express.Request, res: express.Response): void => {
+    res.send("You have reached the API!");
+});
+
+app.get("/api/test", (req: express.Request, res: express.Response): void => {
+    res.send({name:"Max"});
+});
+
+app.get("/", (req: express.Request, res: express.Response): void => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Server started on port: ${port}, environment: ${process.env.NODE_ENV}, Development: ${isDevelopment}`);
+});
