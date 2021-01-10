@@ -30,6 +30,6 @@ export class Hello extends React.Component<IAppProps, IAppState> {
     }
     
     render() {
-    return <h1>Hellox {this.state.name}. This is a <area shape="" coords="" href="" alt=""/> {this.props.framework} application using {this.props.compiler} with {this.props.bundler}</h1>
+    return <h1>Hello {this.state.name}. This is a <area shape="" coords="" href="" alt=""/> {this.props.framework} application using {this.props.compiler} with {this.props.bundler}</h1>
     }
 }

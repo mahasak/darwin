@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build:client": "./node_modules/.bin/webpack --config ./webpack.config.js --progress",
+    "build:client:prod": "./node_modules/.bin/webpack --config ./webpack.config.js --progress --mode=production",
     "build:server": "tsc",
-    "start": "npm run build:client && npm run build:server && cd dist/server && node server.js",
+    "start": "NODE_ENV=production npm run build:client:prod && NODE_ENV=production  npm run build:server && cd dist/server && NODE_ENV=production  node server.js",
     "start:dev": "npm run build:client && nodemon --config ./nodemon.json",
     "build": "tsc"
   },

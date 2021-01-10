@@ -4,6 +4,8 @@ import * as webpackConfig from '../../webpack.config';
 export default function wds(app: express.Application) {
     const compiler = require('webpack')(webpackConfig);
 
+    console.log(webpackConfig)
+
     app.use(require('webpack-dev-middleware')(compiler, {
         noInfo: true, publicPath: webpackConfig.output.publicPath, stats: { colors: true }
     }));
