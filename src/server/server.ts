@@ -1,5 +1,6 @@
 import * as express from 'express';
-
+import { applyRoutes } from './utils';
+import routes from './services';
 import * as path from 'path';
 const port = process.env.PORT || 5000
 
@@ -18,13 +19,7 @@ if (isDevelopment) {
     app.use(express.static(path.resolve(__dirname, 'public')));
 }
 
-app.get("/api", (req: express.Request, res: express.Response): void => {
-    res.send("You have reached the API!");
-});
-
-app.get("/api/test", (req: express.Request, res: express.Response): void => {
-    res.send({name:"Max"});
-});
+applyRoutes(routes, app);
 
 app.get("/", (req: express.Request, res: express.Response): void => {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));

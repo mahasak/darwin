@@ -21,7 +21,7 @@ export class Hello extends React.Component<IAppProps, IAppState> {
 
     async componentDidMount() {
 		try {
-			let r = await fetch('/api/test');
+			let r = await fetch('/api/v1/hello?q=Max');
             let data = await r.json();
 			this.setState({ ...data });
 		} catch (error) {
