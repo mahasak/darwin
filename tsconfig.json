@@ -6,7 +6,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./src/",
+    "rootDir": "./",
     "jsx": "react",
     "removeComments": true,
     "experimentalDecorators": true,
@@ -14,14 +14,13 @@
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "typings", "src/server/server.js"
+    "server.ts",
+    "core/**/*",
+    "middleware/**/*",
+    "services/**/*",
   ],
   "exclude": [
     "node_modules",
-    "./src/client/",
-    "./src/**/*.test.ts",
-    "./src/public/"
+    "/client/",
   ]
 }
