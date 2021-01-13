@@ -1,3 +1,4 @@
+import * as bodyParser  from 'body-parser';
 import * as express from 'express';
 import * as path from 'path';
 
@@ -12,6 +13,12 @@ if (typeof process.env.NODE_ENV === 'undefined') {
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const app = express();
+
+app.use( bodyParser.json() ); 
+
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+  }))
 
 
 applyRoutes(routes, app);
