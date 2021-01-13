@@ -7,14 +7,14 @@
       "public"
     ],
     "watch": [
-      "server.ts",
-      "core/**/*",
-      "middleware/**/*",
-      "services/**/*"
+      "server/server.ts",
+      "server/core/**/*",
+      "server/middleware/**/*",
+      "server/services/**/*"
     ],
     "env": {
       "NODE_ENV": "development"
     },
     "ext": "js json ts tsx",
-    "exec": "ts-node server.ts"
+    "exec": "ts-node server/server.ts"
   }

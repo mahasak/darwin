@@ -14,10 +14,10 @@
     "moduleResolution": "node"
   },
   "include": [
-    "server.ts",
-    "core/**/*",
-    "middleware/**/*",
-    "services/**/*",
+    "server/server.ts",
+    "server/core/**/*",
+    "server/middleware/**/*",
+    "server/services/**/*",
   ],
   "exclude": [
     "node_modules",
