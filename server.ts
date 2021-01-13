@@ -4,7 +4,6 @@ import * as path from 'path';
 import { applyRoutes, applyMiddleware } from './core';
 import errorHandlers from './middleware/errorHandlers';
 import routes from './services';
-import wds from './wds'
 const port = process.env.PORT || 5000
 
 if (typeof process.env.NODE_ENV === 'undefined') {
@@ -14,11 +13,6 @@ if (typeof process.env.NODE_ENV === 'undefined') {
 const isDevelopment = process.env.NODE_ENV === 'development';
 const app = express();
 
-if (isDevelopment) {
-    wds(app);
-} else {
-    app.use(express.static(path.resolve(__dirname, 'public')));
-}
 
 applyRoutes(routes, app);
 

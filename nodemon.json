@@ -2,6 +2,7 @@
     "delay": "2000",
     "verbose": true,
     "ignore": [
+      "client",
       "dist",
       "public"
     ],
@@ -12,5 +13,5 @@
       "NODE_ENV": "development"
     },
     "ext": "js json ts tsx",
-    "exec": "ts-node src/server/server.ts"
+    "exec": "ts-node server.ts"
   }
