@@ -4,7 +4,6 @@
   "description": "Sample facebook login/merchant onboarding example",
   "main": "index.js",
   "scripts": {
-
     "build:client": "cd client && npm run build && mv build client && mv client ../dist",
     "build:server": "tsc",
     "build": "npm run clean && npm run build:server && npm run build:client",
