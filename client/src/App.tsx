@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
+  createBrowserRouter,
+  HttpError,
+  makeRouteConfig,
+  Redirect,
   Route,
-  Link
-} from "react-router-dom";
+} from 'found';
 
 import './App.css';
 import Main from './Main';
@@ -46,26 +47,9 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
+    const BrowserRouter = createBrowserRouter({
+      routeConfig: makeRouteConfig(
+        <Route path="/" Component={Main}>
           <Route path="/about">
             <Main />
           </Route>
@@ -75,9 +59,14 @@ class App extends Component {
           <Route path="/">
             <Main />
           </Route>
-        </Switch>
-      </div>
-    </Router>
+        </Route>,
+      ),
+    
+      renderError: ({ error }) => (
+        <div>{error.status === 404 ? 'Not found' : 'Error'}</div>
+      ),
+    });
+    return (<BrowserRouter/>
     );
   }
 }
