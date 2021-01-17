@@ -8,10 +8,13 @@
     "outDir": "./dist",
     "rootDir": "./",
     "jsx": "react",
+    "strict": true,
     "removeComments": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "moduleResolution": "node"
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": ["esnext"],
   },
   "include": [
     "server/server.ts",
